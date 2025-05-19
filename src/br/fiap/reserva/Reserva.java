@@ -6,6 +6,7 @@ import br.fiap.cliente.PessoaFisica;
 import br.fiap.desconto.Desconto;
 
 import java.text.DecimalFormat;
+import java.util.Random;
 
 public class Reserva {
     private Cliente cliente;
@@ -17,13 +18,12 @@ public class Reserva {
         this.cliente = cliente;
         this.valorOriginal = valorOriginal;
         this.assento = assento;
-        aplicarDesconto(valorOriginal);
+        calcularValorFinal(valorOriginal);
     }
 
-    private void aplicarDesconto(double valorOriginal) {
+    private void calcularValorFinal(double valorOriginal) {
         if(cliente instanceof Desconto) {
-            Desconto desconto = (Desconto) cliente;
-            valorFinal = desconto.aplicarDesconto(valorOriginal);
+            valorFinal = ((Desconto) cliente).aplicarDesconto(valorOriginal);
         }
         else {
             valorFinal = valorOriginal;

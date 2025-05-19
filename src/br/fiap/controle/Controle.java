@@ -15,6 +15,10 @@ import static javax.swing.JOptionPane.*;
 
 public class Controle {
 
+    private static List<Cliente> listaCliente = new ArrayList<>();
+    private static List<Assento> listaAssento = new ArrayList<>();
+
+
     public void menu() {
         int opcao;
 
