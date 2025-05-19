@@ -17,7 +17,20 @@ public class Controle {
 
     private static List<Cliente> listaCliente = new ArrayList<>();
     private static List<Assento> listaAssento = new ArrayList<>();
+    private static List<Reserva> listaReserva = new ArrayList<>();
 
+    static {
+        // lista de cliente
+        listaCliente.add(new PessoaFisica("A", "CA", "123"));
+        listaCliente.add(new PessoaFisica("B", "CB", "234"));
+        listaCliente.add(new PessoaFisica("C", "CC", "345"));
+        listaCliente.add(new PessoaFisica("D", "CD", "456"));
+
+        // lista de assentos
+        for(int i = 1; i <= 10; i++){
+            listaAssento.add(new Assento(i));
+        }
+    }
 
     public void menu() {
         int opcao;
@@ -49,7 +62,14 @@ public class Controle {
 
     private void cancelar() { }
 
-    private void pesquisar() { }
+    private void pesquisar() {
+        String indentificador = showInputDialog("CPF/CNPJ para pesquisar");
+        for(Reserva reserva : listaReserva){
+            if(reserva.getCliente().getIdentificador().equals(indentificador)){
+                showMessageDialog(null, reserva);
+            }
+        }
+    }
 
     private void reservar() { }
 
